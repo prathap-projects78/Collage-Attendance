@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Attendance</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="app-container">
+        <!-- Sidebar / Navigation -->
+        <aside class="sidebar glass">
+            <div class="logo">
+                <span class="material-icons-round">school</span>
+                <h2>EduTrack</h2>
+            </div>
+            
+            <nav>
+                <a href="#" class="active">
+                    <span class="material-icons-round">dashboard</span>
+                    Dashboard
+                </a>
+                <a href="#">
+                    <span class="material-icons-round">people</span>
+                    Students
+                </a>
+                <a href="#">
+                    <span class="material-icons-round">bar_chart</span>
+                    Reports
+                </a>
+                <a href="#">
+                    <span class="material-icons-round">settings</span>
+                    Settings
+                </a>
+            </nav>
+
+            <div class="user-profile">
+                <div class="avatar">DA</div>
+                <div class="info">
+                    <p class="name">Prof. Admin</p>
+                    <p class="role">Computer Science</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <div class="header-text">
+                    <h1>Attendance Dashboard</h1>
+                    <p id="current-date">October 24, 2024</p>
+                </div>
+                <div class="header-actions">
+                   <button class="btn-secondary" id="reset-day">
+                        <span class="material-icons-round">restart_alt</span>
+                        Reset Day
+                   </button>
+                   <button class="btn-primary" id="export-data">
+                        <span class="material-icons-round">download</span>
+                        Export Report
+                   </button>
+                </div>
+            </header>
+
+            <!-- Stats Row -->
+            <section class="stats-row">
+                <div class="stat-card glass">
+                    <div class="icon-box blue">
+                        <span class="material-icons-round">groups</span>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Total Students</h3>
+                        <p id="total-count">0</p>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="icon-box green">
+                        <span class="material-icons-round">check_circle</span>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Present</h3>
+                        <p id="present-count">0</p>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="icon-box red">
+                        <span class="material-icons-round">cancel</span>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Absent</h3>
+                        <p id="absent-count">0</p>
+                    </div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="icon-box purple">
+                        <span class="material-icons-round">pie_chart</span>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Attendance Rate</h3>
+                        <p id="attendance-rate">0%</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Main Workspace -->
+            <div class="content-grid">
+                <!-- Student List -->
+                <section class="student-section glass">
+                    <div class="section-header">
+                        <h3>Class List</h3>
+                        
+                        <div class="add-student-box">
+                            <input type="text" id="new-student-name" placeholder="Enter student name...">
+                            <button class="btn-icon" id="add-student-btn">
+                                <span class="material-icons-round">add</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="table-header">
+                        <span>Name</span>
+                        <span>Roll ID</span>
+                        <span>Status</span>
+                        <span>Actions</span>
+                    </div>
+                    
+                    <div class="student-list" id="student-list">
+                        <!-- Students will be injected here -->
+                        <div class="empty-state">
+                            <span class="material-icons-round">person_off</span>
+                            <p>No students added yet.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Quick Summary / Widget -->
+                <section class="widgets-column">
+                     <div class="widget glass">
+                        <h3>Quick Actions</h3>
+                        <div class="action-grid">
+                            <button class="action-btn" onclick="markAllPresent()">
+                                <span class="material-icons-round">done_all</span>
+                                Mark All Present
+                            </button>
+                             <button class="action-btn" onclick="markAllAbsent()">
+                                <span class="material-icons-round">remove_circle_outline</span>
+                                Mark All Absent
+                            </button>
+                        </div>
+                     </div>
+
+                     <div class="widget glass gradient-widget">
+                         <h3>Class Focus</h3>
+                         <p>Machine Learning - CS401</p>
+                         <div class="progress-ring-container">
+                             <!-- Simple CSS Ring -->
+                             <svg class="progress-ring" width="120" height="120">
+                                <circle class="progress-ring__circle" stroke="white" stroke-width="8" fill="transparent" r="52" cx="60" cy="60"/>
+                              </svg>
+                              <span class="progress-text" id="ring-text">0%</span>
+                         </div>
+                     </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
